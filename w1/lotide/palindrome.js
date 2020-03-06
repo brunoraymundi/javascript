@@ -1,0 +1,46 @@
+// FUNCTION IMPLEMENTATION (MULTIPLE BUGS)
+const isPalindrome = function(str) {
+  const noSpaces = str.split(" ").join("").toLowerCase();
+  const midIndex = Math.floor(noSpaces.length/2);
+  const lastIndex = noSpaces.length - 1;
+  
+  newstr = ''.toLowerCase()
+  for (let i = 0; i < noSpaces.length; i++) {
+      //console.log(noSpaces[lastIndex - i])
+      newstr += noSpaces[lastIndex - i]
+    }
+  if (newstr == noSpaces){
+      //console.log('TRUE')
+      console.log(`${str} reversed is equal to ${newstr}, so it's palindrome`)
+      return true;  
+  } else {
+      console.log(`${str} reversed is equal to ${newstr}, so it isn't palindrome`)
+      return false
+  }
+      
+  }
+  
+  // Assertion Function
+  const assertPalindrome = function(word, expected) {
+    console.log(`Testing isPalindrome(\"${word}\"):`);
+    const actual = isPalindrome(word);
+    if (actual === expected) {
+      console.log("\x1b[32m%s\x1b[0m", `\tPASS ✅ function returned ${actual}\n`);
+    } else {
+      console.log("\x1b[31m%s\x1b[0m", `\tFAIL 🛑 function returned ${actual} (expected ${expected})\n`);
+    }
+  }
+  
+  
+  // TEST CODE
+  // These should all pass assertion, but they don't.
+  assertPalindrome('p', true);
+  assertPalindrome('racecar', true);
+  assertPalindrome('my gym', true);
+  assertPalindrome('foo', false);
+  assertPalindrome('fluff', false);
+  assertPalindrome('just some random words', false);
+  
+  // Bonus / Stretch: Uncomment these tests and figure out why these are also failing
+  assertPalindrome('Kayak', true);
+  assertPalindrome('a santa at NASA', true);
